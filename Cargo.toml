@@ -14,12 +14,12 @@ description = "RGB tests"
 
 [dependencies]
 amplify = "4.8.1"
-bdk_wallet = { version = "3.1.0", features = [
+bdk_wallet = { version = "3.2.0", features = [
     "file_store",
     "std",
 ] }
-bdk_electrum = "0.24.0"
-bdk_esplora = "0.22.2"
+bdk_electrum = "0.24.1"
+bdk_esplora = "0.22.3"
 bitcoin_hashes = "1.0.0"
 bp-electrum = { version = "=0.11.1-alpha.2" }
 bp-wallet = { version = "=0.11.1-alpha.2", features = [
@@ -111,6 +111,13 @@ rgb-strict-encoding = { path = "./rgb-strict-encoding/rust" }
 rgb-strict-encoding-derive = { path = "./rgb-strict-encoding/rust/derive" }
 ## strict-types
 rgb-strict-types = { path = "./rgb-strict-types" }
+
+[dev-dependencies]
+# Reproduction of the insufficient-fee boundary in rgb-lib's `send_begin`.
+rgb-lib = { git = "https://github.com/RGB-Tools/rgb-lib", branch = "next", default-features = false, features = [
+  "wallet",
+  "electrum",
+] }
 
 [features]
 default = []
